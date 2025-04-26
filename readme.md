@@ -19,7 +19,6 @@
 - **Interactive Visualizations** in Jupyter Notebook
 
 ## Quick Start
-bash
 # Clone repository
 git clone https://github.com/Arralle21/healthcare-spending-survey.git
 cd healthcare-spending-survey
