@@ -16,6 +16,7 @@
 - **Real-time Data Storage**: MongoDB Atlas with automatic backups
 - **CSV Export**: Daily exports to AWS S3 (`healthcare-survey-data` bucket)
 - **Interactive Analysis**: [View Jupyter Notebook](analysis/data_analysis.ipynb)
+  ![Healthcare Data Flow](docs/assets/data_flow.png)
 
 ## Quick Deployment
 
