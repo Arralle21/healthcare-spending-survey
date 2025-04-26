@@ -5,6 +5,7 @@
 ![Flask](https://img.shields.io/badge/flask-2.3.2-green)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)
 ![AWS](https://img.shields.io/badge/AWS-EB-orange)
+![Healthcare Data Flow](docs/assets/data_flow.png)
 
 ##  Live Deployment
 [![Open in Browser](https://img.shields.io/badge/Production-Live%20Site-success)](http://healthcare-survey-new.eba-q77ahvcn.us-west-2.elasticbeanstalk.com)
@@ -16,7 +17,7 @@
 - **Real-time Data Storage**: MongoDB Atlas with automatic backups
 - **CSV Export**: Daily exports to AWS S3 (`healthcare-survey-data` bucket)
 - **Interactive Analysis**: [View Jupyter Notebook](analysis/data_analysis.ipynb)
-  ![Healthcare Data Flow](docs/assets/data_flow.png)
+
 
 ## Quick Deployment
 
