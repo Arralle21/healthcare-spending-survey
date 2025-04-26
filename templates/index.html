@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Spending Survey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center mb-0">Healthcare Spending Survey</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/submit" method="POST">
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" required min="18" max="120">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="" selected disabled>Select your gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="non-binary">Non-binary</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="income" class="form-label">Total Monthly Income ($)</label>
+                                <input type="number" class="form-control" id="income" name="income" required min="0" step="0.01">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h4>Monthly Expenses</h4>
+                                <p class="text-muted">Check the categories you spend on and enter the amount</p>
+                                
+                                <div class="expense-category mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="utilities" name="utilities">
+                                        <label class="form-check-label" for="utilities">Utilities</label>
+                                    </div>
+                                    <div class="input-group mt-1">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="utilities_amount" name="utilities_amount" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                
+                                <div class="expense-category mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="entertainment" name="entertainment">
+                                        <label class="form-check-label" for="entertainment">Entertainment</label>
+                                    </div>
+                                    <div class="input-group mt-1">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="entertainment_amount" name="entertainment_amount" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                
+                                <div class="expense-category mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="school_fees" name="school_fees">
+                                        <label class="form-check-label" for="school_fees">School Fees</label>
+                                    </div>
+                                    <div class="input-group mt-1">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="school_fees_amount" name="school_fees_amount" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                
+                                <div class="expense-category mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="shopping" name="shopping">
+                                        <label class="form-check-label" for="shopping">Shopping</label>
+                                    </div>
+                                    <div class="input-group mt-1">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="shopping_amount" name="shopping_amount" min="0" step="0.01">
+                                    </div>
+                                </div>
+                                
+                                <div class="expense-category mb-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="healthcare" name="healthcare">
+                                        <label class="form-check-label" for="healthcare">Healthcare</label>
+                                    </div>
+                                    <div class="input-group mt-1">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="healthcare_amount" name="healthcare_amount" min="0" step="0.01">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit Survey</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Enable/disable amount inputs based on checkbox state
+        document.querySelectorAll('.form-check-input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const amountField = document.getElementById(`${this.id}_amount`);
+                amountField.disabled = !this.checked;
+                if (!this.checked) {
+                    amountField.value = '';
+                }
+            });
+            
+            // Initialize on page load
+            const amountField = document.getElementById(`${checkbox.id}_amount`);
+            amountField.disabled = !checkbox.checked;
+        });
+    </script>
+</body>
+</html>

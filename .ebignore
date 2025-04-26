@@ -1,0 +1,6 @@
+NTUSER.DAT
+thumbs.db
+Desktop.ini
+*.pyc
+__pycache__
+.git
